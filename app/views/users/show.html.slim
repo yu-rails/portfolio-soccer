@@ -1,0 +1,44 @@
+.main.users-show
+  .container
+    .user
+      h3.username.form-heading
+        span.bn
+          | #{@user.back_number}
+        = @user.name
+      img src="/user_images/#{@user.image_name}"
+      p.userid= @user.nickname
+      - if @user.id == @current_user.id
+        button.btn.exit.fas.fa-user-edit= link_to "編集する","/users/#{@user.id}/edit",class: "Editlink"
+        button.btn.sear.fas.fa-running.dropdown-toggle.Editlink#btnGroupDrop1[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]トレーニング
+        .dropdown-menu[aria-labelledby="btnGroupDrop1"]
+          = link_to "練習メニューを書く","/trainings/new",class: "dropdown-item"
+          = link_to "練習メニューを見る","/trainings",class: "dropdown-item"
+        p.lifting-text.bg-dark.text-white 1日1回 その日のリフティングの最高回数を記録してみよう！
+        .oneday
+          .fas.fa-arrow-circle-down.yazi
+          p.btn.fut.fas.fa-futbol= link_to "リフティングを記録する","/liftings/new",class: "Editlink"
+
+      - if @user.liftings.present?
+        .maximum-tab
+          .maximum-text #{@user.name}のリフティングの最高記録は
+          .maximum-record= @max+"回"
+
+      ul.user-tabs
+        li.active= link_to "記録", "/users/#{@user.id}"
+        li= link_to "練習", "/users/#{@user.id}"
+
+      - @liftings.each do |lifting|
+        .lifting-index
+          .lifting-left
+            = l lifting.created_at, format: :short, class: "created"
+          .lifting-center
+            .lifting-record
+              = link_to lifting.record + "回", "/liftings/#{lifting.id}"
+          .lifting-right
+            .lifting-remark
+              - if lifting.remark?
+                = link_to "備考あり", "/liftings/#{lifting.id}"
+      .mb-3
+        = paginate @liftings
+        .alert.alert-info= page_entries_info @liftings, entry_name: "記録"
+      

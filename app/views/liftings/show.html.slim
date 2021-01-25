@@ -1,0 +1,39 @@
+.main.liftings-show
+  .container
+    h3.form-heading リフティングの詳細
+    .lifting-show
+      .lifting-name
+        img src="/user_images/#{@user.image_name}"
+        = link_to @user.name, "/users/#{@user.id}"
+      .lift-oya
+        - if @lifting.record.to_i < 50
+          p.lift-content= @lifting.record
+        - elsif @lifting.record.to_i < 100
+          p.lift-content2= @lifting.record
+        - elsif @lifting.record.to_i < 200
+          p.lift-content3= @lifting.record
+        - else
+          p.lift-content4= @lifting.record
+        p.lift-rig 回
+      .lift-time
+        = l @lifting.created_at
+      - if @user.id == @current_user.id
+        = link_to '編集', "/liftings/#{@lifting.id}/edit", class: 'btn btn-primary mr-3'
+        button.btn.btn-danger[data-toggle="modal" data-target="#exampleModalCentered"]削除
+        #exampleModalCentered.modal[tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel" aria-hidden="true"]
+          .modal-dialog.modal-dialog-centered[role="document"]
+            .modal-content
+              .modal-header
+                h5#exampleModalCenteredLabel.modal-title 本当に削除しますか？
+                button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                  span[aria-hidden="true"]&times;
+              .modal-body 
+                = l @lifting.created_at, format: :date, class: "destroy-date"
+                この日の記録はもうできなくなります
+              .modal-footer
+                button.btn.btn-secondary[type="button" data-dismiss="modal"]戻る
+                = link_to '削除', @lifting, method: :delete, class: 'btn btn-danger'
+    - if @lifting.remark?
+      .lifting-con
+        p.conson 備考
+        p.concon= @lifting.remark

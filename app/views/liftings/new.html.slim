@@ -1,0 +1,19 @@
+.main.liftings-new
+  .container
+    h2.form-heading 今日のリフティング
+
+    .form.liftings-form
+      .form-body
+        - if @lifting.errors.present?
+          ul#error_explanation
+            - @lifting.errors.full_messages.each do |message|
+              li= message
+        = form_with url: liftings_create_path, local: true do |f|
+          .form-group
+            = f.label :record, 'リフティングの最高記録'
+            = f.text_field :record, class: 'form-control',value: @lifting.record
+          .form-group
+            = f.label :remark, '備考'
+            = f.text_area :remark,rows: 3, class: 'form-control',value: @lifting.remark
+          p.warining 1日1回のみ記録できます！記録を変えたい場合は編集を行ってください！
+          =f.submit '記録する', class: 'btn btn-primary'

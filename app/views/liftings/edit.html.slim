@@ -1,0 +1,19 @@
+.main.users-edit
+  .container
+    h2.form-heading リフティングの編集
+
+    .form.liftings-form
+      .form-body
+        - if @lifting.errors.present?
+          ul#error_explanation
+            - @lifting.errors.full_messages.each do |message|
+              li= message
+
+        = form_with url: "/liftings/#{@lifting.id}",method: :patch, local: true do |f|
+          .form-group
+            = f.label :record, 'リフティングの最高記録'
+            = f.text_field :record, class: 'form-control',value: @lifting.record
+          .form-group
+            = f.label :remark, '備考'
+            = f.text_area :remark,rows: 3, class: 'form-control',value: @lifting.remark
+          =f.submit '変更する', class: 'btn btn-primary'

@@ -1,0 +1,30 @@
+.main.users-new
+  .container
+    h2.form-heading 新規ユーザーの登録
+
+    .form.users-form
+      .form-body
+        - if @user.errors.present?
+          ul#error_explanation
+            - @user.errors.full_messages.each do |message|
+              li= message
+
+        = form_with url: users_create_path, local: true do |f|
+          .form-group
+            = f.label :name, '名前'
+            = f.text_field :name, class: 'form-control',placeholder: "10文字以内",value: @user.name
+          .form-group
+            = f.label :nickname, 'ユーザーID'
+            = f.text_field :nickname, class: 'form-control',placeholder: "4文字以上20文字以内の英数字(変更不可)",value: @user.nickname
+          .form-group
+            = f.label :password, 'パスワード'
+            = f.password_field :password, class: 'form-control',placeholder: "6文字以上20文字以内の英数字"
+          .form-group
+            = f.label :password_confirmation, 'パスワード(確認用)'
+            = f.password_field :password_confirmation, class: 'form-control',placeholder: "6文字以上20文字以内の英数字"
+          .form-group
+            = f.label :back_number, '背番号'
+            = f.text_field :back_number, class: 'form-control',placeholder: "数字2桁まで(無記入でも可)",value: @user.back_number
+          p.warining 注意※ユーザーIDとパスワードを忘れると今後ログインができません！
+          p.warining メモアプリなどに書いておくことをオススメします！
+          =f.submit '登録する', class: 'btn btn-primary'

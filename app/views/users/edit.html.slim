@@ -1,0 +1,32 @@
+.main.users-edit
+  .container
+    h2.form-heading アカウント編集
+
+    .form.users-form
+      .form-body
+        - if @user.errors.present?
+          ul#error_explanation
+            - @user.errors.full_messages.each do |message|
+              li= message
+
+        = form_with url: "/users/#{@user.id}/update",multipart: true, local: true do |f|
+          p.warining 名前とパスワード欄が空欄だと編集が完了しません
+          p.warining パスワードを変えたくない場合は以前と同様のパスワードを再び打ち込んでください
+          .form-group
+            = f.label :name, '名前'
+            = f.text_field :name, class: 'form-control',placeholder: "10文字以内",value: @user.name
+          .form-group
+            = f.label :image_name, 'アイコン画像'
+            = f.file_field :image_name, class: 'form-control'
+          .form-group
+            = f.label :password, 'パスワード'
+            = f.password_field :password, class: 'form-control',placeholder: "6文字以上20文字以内の英数字"
+          .form-group
+            = f.label :password_confirmation, 'パスワード(確認用)'
+            = f.password_field :password_confirmation, class: 'form-control',placeholder: "6文字以上20文字以内の英数字"
+          .form-group
+            = f.label :back_number, '背番号'
+            = f.text_field :back_number, class: 'form-control',placeholder: "数字2桁まで",value: @user.back_number
+          p.warining 注意※ユーザーIDとパスワードを忘れると今後ログインができません！
+          p.warining メモアプリなどに書いておくことをオススメします！
+          =f.submit '変更する', class: 'btn btn-primary'

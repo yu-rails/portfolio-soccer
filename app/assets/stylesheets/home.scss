@@ -1,0 +1,56 @@
+.jumbotron {
+  background-image: url("top.jpg");
+  background-size: cover;
+  background-position: center 60%;
+
+}
+.mokuzi {
+  padding-top: 100px;
+  font-weight: bolder;
+  font-size: 100px;
+  color: white;
+  text-shadow: 0 1px 0 #ccc, 0 3px 0 #ccc, 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+.kusai {
+  padding: 0;
+  font-size: 20px;
+  font-weight: bolder;
+  color: orange;
+  background-color: rgba(0, 238, 226, 0.562);
+  
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 10px 24px;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+.Editlinko{
+  text-decoration: none;
+  color: black ;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.signup{
+  margin-right: 30px;
+  background-color: rgb(39, 238, 205);
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.login{
+  background-color: coral;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.container{
+  text-align: center;
+}

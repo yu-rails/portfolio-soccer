@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title
+      | 練習記録管理サイト
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .app-title.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        - if current_user
+          .navbar-brand= link_to '練習記録管理', "/users/#{current_user.id}", class: 'nav-link navbar'
+        - else
+          .navbar-brand= link_to '練習記録管理', "/", class: 'nav-link navbar'
+        button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+          .navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            - if current_user
+              li.nav-item.active= link_to current_user.name, "/users/#{current_user.id}", class: 'nav-link'
+              li.nav-item.active= link_to 'リフティング', "/liftings/new", class: 'nav-link'
+              li.nav-item.active.dropdown
+                .nav-link.dropdown-toggle#navbarDarkDropdownMenuLink[role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"] トレーニング
+                .dropdown-menu.dropdown-menu-dark.bg-dark[aria-labelledby="navbarDarkDropdownMenuLink"]
+                  .dropdown-item.team-color= link_to '練習メニューを書く', "/trainings/new", class: 'nav-link'
+                  .dropdown-item.team-color= link_to '練習メニューを見る', "/trainings", class: 'nav-link'
+              li.nav-item.active= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+            - else
+              li.nav-item.active= link_to 'どんなサイト？', "/home/about", class: 'nav-link'
+              li.nav-item.active= link_to '新規登録', "/signup", class: 'nav-link'
+              li.nav-item.active= link_to 'ログイン', login_path, class: 'nav-link'
+
+
+
+    .container
+    - if flash.notice.present?
+      .alert.alert-success= flash.notice
+    - if flash.alert.present?
+      .alert.alert-danger= flash.alert
+    = yield

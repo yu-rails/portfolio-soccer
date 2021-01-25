@@ -1,0 +1,114 @@
+.liftings-new{
+  background-image: url("lifting_new.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  padding-bottom: 30px;
+}
+.liftings-show{
+  background-image: url("show.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  padding-bottom: 30px;
+}
+.liftings-form{
+  margin-top: 50px;
+  background-color: rgb(220, 248, 255);
+  opacity: 0.95;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.lifting-show{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.842);
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  width: 60%;
+  margin: 30px auto auto;
+}
+
+.lifting-name img{
+  width: 60px;
+  height: 60px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.lifting-show .lifting-name a{
+  vertical-align: middle;
+  font-size: 24px;
+  margin-left: 15px;
+  color: black;
+  font-weight: 600;
+}
+
+.lifting-name{
+  text-align: left;
+}
+
+.lift-content {
+  font-size: 60px;
+  margin: 40px 0 20px auto;
+  font-weight: 800;
+  color: black;
+  text-align: center;
+}
+.lift-content2 {
+  font-size: 65px;
+  margin: 35px 0 20px auto;
+  font-weight: 800;
+  color: rgb(86, 211, 173);
+  text-align: center;
+}
+.lift-content3 {
+  font-size: 70px;
+  margin: 30px 0 20px auto;
+  font-weight: 800;
+  color: rgb(0, 162, 255);
+  text-align: center;
+}
+.lift-content4 {
+  font-size: 80px;
+  margin: 20px 0 20px auto;
+  font-weight: 800;
+  color: rgb(255, 81, 0);
+  text-align: center;
+}
+
+.lift-oya{
+  display: flex;
+}
+
+.lift-rig{
+  font-weight: 300;
+  font-size: 30px;
+  margin: 80px auto 0 0;
+}
+
+.lift-time{
+  color: #8899a6;
+  margin-bottom: 10px;
+}
+
+.lifting-con{
+  padding: 3px 30px 30px 30px;
+  background-color: rgba(255, 255, 255, 0.842);
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  width: 80%;
+  margin: 0px auto auto;
+}
+.conson{
+  margin-top: 0;
+  text-align: left;
+  font-weight: 300;
+  color: #8899a6;
+}
+
+.concon{
+  text-align: left;
+  color: blue;
+}
+

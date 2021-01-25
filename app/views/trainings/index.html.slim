@@ -1,0 +1,25 @@
+.main.trainings-index
+  .container
+    .training
+      h3.training-heading トレーニング
+      h3.training-heading メニュー
+      
+    .training-menu
+      .card-deck
+        .row
+          - @trainings.each do |training|
+            .col-sm-4
+              .card.h-100
+                .card-body
+                  img.card-title src="/user_images/#{training.user.image_name}"
+                  = link_to training.user.name,"/users/#{training.user_id}"
+                  .card-subtitle= training.end_on
+                  hr.line
+                  p.card-text= safe_join(training.content.split("\n"),tag(:br))
+                .card-footer
+                  .left-footer
+                    .btn.btn-info.btn-show= link_to "詳しく！","/trainings/#{training.id}"
+                  .right-footer
+                    - if training.tag?
+                      .tag= "タグ：" + training.tag
+                    = time_ago_in_words(training.created_at) + "前"

@@ -1,0 +1,28 @@
+@import "bootstrap";
+@import "home.scss";
+@import "users.scss";
+@import "sessions.scss";
+@import "liftings.scss";
+@import "trainings.scss";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.app-title {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.team-color:hover{
+  background-color: black;
+  color: white;
+}
+
+.container{
+  padding-top: 71px;
+}
+.alert{
+  margin-bottom: 0;
+}
