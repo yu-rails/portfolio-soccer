@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
-  resources :trainings, except: [:edit, :update]
-  get 'liftings/new', to: 'liftings#new'
-  post 'liftings/create', to: 'liftings#create'
-  get 'liftings/:id/edit', to: 'liftings#edit'
-  patch 'liftings/:id', to: 'liftings#update'
-  resources :liftings, only: [:destroy]
-  get 'liftings/:id', to: 'liftings#show'
+  resources :trainings, except: [:edit, :update] do
+    resources :clears, only: [:create, :destroy]
+  end
+  resources :liftings, except: [:index]
+  resources :users, except: [:index, :destroy] do
+    member do
+      get :trainings, :clears, :favorites
+    end
+    resources :favorites, only: [:create, :destroy]
+    post :confirm, action: :confirm_new, on: :new
+  end
+  root to: 'home#top'
+  get '/home/about', to: 'home#about'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'signup', to: 'users#new'
-  post 'users/create', to: 'users#create'
-  get 'users/:id/edit', to: 'users#edit'
-  post 'users/:id/update', to: 'users#update'
-  get 'users/:id', to: 'users#show'
-  get '/', to: 'home#top'
-  get '/home/about', to: 'home#about'
+  get 'users/new/confirm', to: 'home#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

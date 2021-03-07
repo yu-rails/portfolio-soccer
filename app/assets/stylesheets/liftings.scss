@@ -23,7 +23,8 @@
   background-color: rgba(255, 255, 255, 0.842);
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
-  width: 60%;
+  width: 80%;
+  max-width: 500px;
   margin: 30px auto auto;
 }
 
@@ -38,7 +39,7 @@
 
 .lifting-show .lifting-name a{
   vertical-align: middle;
-  font-size: 24px;
+  font-size: 22px;
   margin-left: 15px;
   color: black;
   font-weight: 600;

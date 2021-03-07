@@ -1,14 +1,15 @@
 .main.liftings-new
   .container
     h2.form-heading 今日のリフティング
-
+    .nav.justify-content-end
+      = link_to 'ユーザーページに戻る', "/users/#{current_user.id}", class: 'btn btn-secondary'
     .form.liftings-form
       .form-body
         - if @lifting.errors.present?
           ul#error_explanation
             - @lifting.errors.full_messages.each do |message|
               li= message
-        = form_with url: liftings_create_path, local: true do |f|
+        = form_with model: @lifting, local: true do |f|
           .form-group
             = f.label :record, 'リフティングの最高記録'
             = f.text_field :record, class: 'form-control',value: @lifting.record

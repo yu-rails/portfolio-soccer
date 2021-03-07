@@ -12,8 +12,12 @@ class User < ApplicationRecord
   VALID_BACKNUMBER_REGEX = /\A[0-9]+\z/
   validates :back_number, allow_blank: true, length: {maximum: 2},
        format:{with: VALID_BACKNUMBER_REGEX}
+  validates :prefecture, allow_blank: true, length: {maximum: 10}
+  mount_uploader :image_name, ImageNameUploader
 
   has_many :liftings
   has_many :trainings
+  has_many :clears, dependent: :destroy
 
+ 
 end

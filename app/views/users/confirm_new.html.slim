@@ -1,0 +1,32 @@
+.main.users-new
+  .container
+    h2.form-heading 登録内容の確認
+
+    .form.users-form
+      .form-body
+        = form_with model: @user, local: true do |f|
+          table.table.table-hover
+            tbody
+              tr
+                th= User.human_attribute_name(:name)
+                td= @user.name
+                = f.hidden_field :name
+              tr
+                th= User.human_attribute_name(:nickname)
+                td= @user.nickname
+                = f.hidden_field :nickname
+              - if @user.prefecture.present?
+                tr
+                  th= User.human_attribute_name(:prefecture)
+                  td= @user.prefecture
+              = f.hidden_field :prefecture
+              - if @user.back_number.present?
+                tr
+                  th= User.human_attribute_name(:back_number)
+                  td= @user.back_number
+              = f.hidden_field :back_number
+              = f.hidden_field :password
+              = f.hidden_field :password_confirmation
+          p.warining 問題がなければ「登録する」を押してください！
+          =f.submit '戻る', name: 'back', class: 'btn btn-secondary mr-3'
+          =f.submit '登録する', class: 'btn btn-primary'

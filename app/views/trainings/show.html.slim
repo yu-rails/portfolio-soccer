@@ -1,2 +1,80 @@
-h1 Trainings#show
-p Find me in app/views/trainings/show.html.slim
+.main.trainings-show
+  .container
+    h2.training-heading トレーニング
+    h2.training-heading 詳細
+    .training-field
+      .training-name
+        - if @training.user.image_name?
+          img src="#{@training.user.image_name}" 
+        - else
+          image src="/assets/default_user.jpg"
+        = link_to @user.name, "/users/#{@user.id}"
+        .card-subtitle.sub-show 終了日
+        .card-subtitle.sub-show2= @training.end_on
+        - if @training.tag?
+          .tag.tag-show= "タグ：" + @training.tag
+        hr.line
+      .training-text
+        .train-content= safe_join(@training.content.split("\n"),tag(:br))
+      .training-time
+        = l @training.created_at
+        hr.line
+      .user-count
+        .user-count-number= @clears_count.to_s
+        .user-count-text 人のユーザーがクリア
+      hr.line
+      - if @training.end_on >  Date.today
+        .check
+          -if Clear.find_by(user_id: current_user.id, training_id: @training.id)   
+            = link_to training_clear_path(@training), remote: true, method: :delete do
+              .fas.fa-flag-checkered.clear
+          - else
+            = link_to training_clears_path(@training), remote: true, method: :post do
+              .fas.fa-flag-checkered.not-clear
+      hr.line
+      .clear-content
+      - if @training.end_on >  Date.today
+        - if @clear_person.present?
+          .clear-text= @user.name
+          .user-count-text さんはクリア済みです
+        - else
+          .clear-text-not= @user.name 
+          .user-count-text さんはまだ未達成です
+      - else
+        - if @clear_person.present?
+          .clear-text= @user.name
+          .user-count-text さんはクリアできた
+        - else
+          .clear-text-not= @user.name 
+          .user-count-text さんはクリアできなかった
+      - if @user.id == @current_user.id
+        button.btn.btn-danger.block[data-toggle="modal" data-target="#exampleModalCentered"]削除
+        #exampleModalCentered.modal[tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredLabel" aria-hidden="true"]
+            .modal-dialog.modal-dialog-centered[role="document"]
+              .modal-content
+                .modal-header
+                  h5#exampleModalCenteredLabel.modal-title 本当に削除しますか？
+                  button.close[type="button" data-dismiss="modal" aria-label="Close"]
+                    span[aria-hidden="true"]&times;
+                .modal-body 
+                  削除したトレーニングは戻せません
+                .modal-footer
+                  button.btn.btn-secondary[type="button" data-dismiss="modal"]戻る
+                  = link_to '削除', @training, method: :delete, class: 'btn btn-danger'
+    .nav.justify-content-end
+      = link_to 'トレーニング一覧に戻る', "/trainings", class: 'btn btn-secondary'
+    h2.clear-heading クリアしたユーザ
+    - @clears.each do |clear|
+      - user = User.find_by(id: clear.user_id)
+      .clear-container
+        .clear-left
+          - if user.image_name?
+            img src="#{user.image_name}" 
+          - else
+            image src="/assets/default_user.jpg"
+        .clear-right
+          = link_to user.name, "/users/#{user.id}"
+          .clear-date= l clear.created_at
+    .mb-3
+      .alert.alert-info= page_entries_info @clears, entry_name: "クリアしたユーザ"
+      = paginate @clears

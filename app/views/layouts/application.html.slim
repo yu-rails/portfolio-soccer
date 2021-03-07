@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | 練習記録管理サイト
+      | サカキロ
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -10,9 +10,9 @@ html
   body
     .app-title.navbar.navbar-expand-lg.navbar-dark.bg-dark
         - if current_user
-          .navbar-brand= link_to '練習記録管理', "/users/#{current_user.id}", class: 'nav-link navbar'
+          .navbar-brand= link_to 'サカキロ', "/users/#{current_user.id}", class: 'nav-link navbar'
         - else
-          .navbar-brand= link_to '練習記録管理', "/", class: 'nav-link navbar'
+          .navbar-brand= link_to 'サカキロ', "/", class: 'nav-link navbar'
         button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
           .navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -28,6 +28,7 @@ html
               li.nav-item.active= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
             - else
               li.nav-item.active= link_to 'どんなサイト？', "/home/about", class: 'nav-link'
+              li.nav-item.active= link_to '練習メニューを見る', "/trainings", class: 'nav-link'
               li.nav-item.active= link_to '新規登録', "/signup", class: 'nav-link'
               li.nav-item.active= link_to 'ログイン', login_path, class: 'nav-link'
 

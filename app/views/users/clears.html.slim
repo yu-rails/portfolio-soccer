@@ -1,0 +1,65 @@
+.main.users-show
+  .container
+    .user
+      h3.username.form-heading
+        -if @current_user.id != @user.id
+          -if Favorite.find_by(current_user_id: current_user.id, user_id: @user.id)   
+            = link_to user_favorite_path(@user), remote: true, method: :delete do
+              .fas.fa-star.shine
+          - else
+            = link_to user_favorites_path(@user), remote: true, method: :post do
+              .fas.fa-star.not-shine
+        span.bn
+          | #{@user.back_number}
+        = @user.name
+      - if @user.image_name?
+        img src="#{@user.image_name}" 
+      - else
+        image src="/assets/default_user.jpg"
+      p.userid= @user.nickname
+      - if @user.id == @current_user.id
+        button.btn.exit.fas.fa-user-edit= link_to "編集する","/users/#{@user.id}/edit",class: "Editlink"
+        button.btn.sear.fas.fa-running.dropdown-toggle.Editlink#btnGroupDrop1[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]トレーニング
+        .dropdown-menu[aria-labelledby="btnGroupDrop1"]
+          = link_to "練習メニューを書く","/trainings/new",class: "dropdown-item"
+          = link_to "練習メニューを見る","/trainings",class: "dropdown-item"
+        p.lifting-text.bg-dark.text-white 1日1回 その日のリフティングの最高回数を記録してみよう！
+        .oneday
+          .fas.fa-arrow-circle-down.yazi
+          p.btn.fut.fas.fa-futbol= link_to "リフティングを記録する","/liftings/new",class: "Editlink"
+
+
+      ul.user-tabs
+        li= link_to "記録", "/users/#{@user.id}"
+        li= link_to "練習", "/users/#{@user.id}/trainings"
+        li.active= link_to "クリア", "/users/#{@user.id}/clears"
+        - if @user.id == @current_user.id
+          li= link_to "☆", "/users/#{@user.id}/favorites"
+
+      .lifting-index
+        .card-deck
+          .row
+            - @clears.each do |clear|
+              - training = Training.find_by(id: clear.training_id)
+              .col-sm-5
+                .card.h-100[style="width: 350px"]
+                  .card-body
+                    - if training.user.image_name?
+                      img.card-title src="#{training.user.image_name}" 
+                    - else
+                      image.card-title src="/assets/default_user.jpg"
+                    = link_to training.user.name,"/users/#{training.user_id}"
+                    .card-subtitle 終了日
+                    .card-subtitle= training.end_on
+                    hr.line
+                    p.card-text= safe_join(training.content.split("\n"),tag(:br))
+                  .card-footer
+                    .left-footer
+                      = link_to "詳しく！","/trainings/#{training.id}", class: "btn btn-info btn-show"
+                    .right-footer
+                      - if training.tag?
+                        .tag= "タグ：" + training.tag
+                      .time-ago= time_ago_in_words(training.created_at) + "前"
+      .mb-3
+        = paginate @clears
+        .alert.alert-info= page_entries_info @clears, entry_name: "クリアしたトレーニング"

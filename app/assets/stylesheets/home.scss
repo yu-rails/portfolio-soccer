@@ -2,23 +2,29 @@
   background-image: url("top.jpg");
   background-size: cover;
   background-position: center 60%;
-
 }
-.mokuzi {
-  padding-top: 100px;
+.jumbotron-fluid{
+  margin-bottom: 0;
+}
+.soccer-title {
+  padding-top: 30px;
+  padding-bottom: 70px;
   font-weight: bolder;
   font-size: 100px;
   color: white;
   text-shadow: 0 1px 0 #ccc, 0 3px 0 #ccc, 0 4px 10px rgba(0, 0, 0, .2);
 }
 
-.kusai {
-  padding: 0;
+.soccer-subtitle {
+  padding: 1rem 3rem;
   font-size: 20px;
-  font-weight: bolder;
-  color: orange;
-  background-color: rgba(0, 238, 226, 0.562);
-  
+  font-weight: 600;
+  -webkit-transform: skew(-15deg);
+  transform: skew(-15deg);
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#209cff), to(#68e0cf));
+  background-image: -webkit-linear-gradient(left, #209cff 0%, #68e0cf 100%);
+  background-image: linear-gradient(to right, #209cff 0%, #68e0cf 100%);
 }
 
 .btn {
@@ -53,4 +59,97 @@
 
 .container{
   text-align: center;
+}
+
+.soccer-about h2 {
+  margin-top: 50px;
+  position: relative;
+  padding: 1.5rem 2rem;
+  color: #fff;
+  border-radius: 10px;
+  background: orange;
+}
+
+.soccer-about h2:after {
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: orange transparent transparent transparent;
+}
+.soccer-trainings h2 {
+  margin-top: 50px;
+  position: relative;
+  padding: 1.5rem 2rem;
+  color: #fff;
+  border-radius: 10px;
+  background: rgb(48, 48, 201);
+}
+
+.soccer-trainings h2:after {
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  content: '';
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: rgb(48, 48, 201) transparent transparent transparent;
+}
+
+//about
+
+.about{
+  background-color: rgba(0, 107, 54, 0.788);
+}
+
+.about-main{
+  padding: 125px 8% 0;
+  color: white;
+}
+
+.about-main h2{
+  font-size: 55px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.about-main p{
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.carousel img{
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.carousel{
+  color: white;
+}
+
+.carousel h3{
+  margin-top: 80px;
+  font-weight: 800;
+  font-size: 36px;
+}
+
+.carousel p{
+  font-size: 22px;
+}
+
+.carousel .small-font{
+  font-size: 29px;
+  font-weight: 800;
+}
+
+.under{
+  margin-bottom: 50px;
 }

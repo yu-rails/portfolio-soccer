@@ -1,7 +1,9 @@
 .main.trainings-new
   .container
-    h2.training-heading トレーニング作成
-
+    h2.training-heading トレーニング
+    h2.training-heading 作成
+    .nav.justify-content-end
+      = link_to 'トレーニング一覧に戻る', "/trainings", class: 'btn btn-secondary'
     .form.liftings-form
       .form-body
         - if @training.errors.present?

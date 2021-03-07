@@ -5,7 +5,7 @@ class Lifting < ApplicationRecord
 
   validates :remark, allow_blank: true, length: {maximum: 300}
 
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :user_id, uniqueness: { conditions: -> { where('created_at >= ?', 1.days.ago) }, message: 'どうやらすでに今日の分の記録はしているようですね'}, on: :create
 end

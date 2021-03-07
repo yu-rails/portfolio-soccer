@@ -1,11 +1,15 @@
 .jumbotron.jumbotron-fluid
   .container
 
-    h1.mokuzi 練習を形に
-    p.kusai チームで努力を競うことができるサイト
+    h1.soccer-title サカキロ
+    p.soccer-subtitle チームで努力を競うことができるサイト
 
     p.btn.signup.fas.fa-user-plus= link_to '新規登録はこちら', "/signup",class: 'Editlinko'
     p.btn.login.fas.fa-sign-in-alt= link_to 'ログインはこちら', "/login",class: 'Editlinko'
 
-.container
-  h1 ログイン
+    .soccer-about
+      h2 サッカーの練習記録に特化したサイトです
+      = link_to "サカキロってなに？", "/home/about", class: "btn btn-info btn-lg under"
+    .soccer-trainings
+      h2 自分や人の作った練習メニューを見ることができます
+      = link_to "練習メニューを見る！", "/trainings", class: "btn btn-dark btn-lg under"

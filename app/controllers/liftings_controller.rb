@@ -44,7 +44,7 @@ class LiftingsController < ApplicationController
   private
 
   def lifting_params
-    params.permit(:record, :remark)
+    params.require(:lifting).permit(:record, :remark)
   end
   def set_lifting
     @lifting = current_user.liftings.find(params[:id])

@@ -13,14 +13,19 @@
   text-shadow: -4px 3px 0 #fa4141, -8px 6px 0 #000;
 }
 
-// new
-
-.trainings-new{
-  background-image: url("training_new.jpg");
-  background-size: cover;
-  background-position: center 60%;
-  padding-bottom: 30px;
+.heading-bottom{
+  margin-bottom: 40px;
 }
+
+.mb-5{
+  margin-top: 20px;
+}
+
+.training-menu{
+  margin-top: 30px;
+}
+
+
 .card{
   background-color: white;
   opacity: 0.8;
@@ -34,10 +39,14 @@
 }
 .card-subtitle{
   color: gray;
+  margin-left: 2.5rem;
 }
 .line{
   opacity: 1;
   margin:0;
+}
+.card-body{
+  text-align: left;
 }
 .card-body a{
   vertical-align: middle;
@@ -72,6 +81,10 @@
   float: right;
 }
 
+.time-ago{
+  text-align: right;
+}
+
 .btn-show{
   padding: 5px;
   margin: 0px;
@@ -79,5 +92,228 @@
 
 .tag{
   color: #106634;
+  font-weight: 500;
+}
+
+.index-clear{
+  display: inline;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.index-count{
+  display: inline;
+  margin:auto 8px auto 5px;
+}
+
+// new
+
+.trainings-new{
+  background-image: url("training_new.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  padding-bottom: 30px;
+}
+
+
+//show
+
+.trainings-show{
+  background-image: url("training.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  padding-bottom: 30px;
+}
+
+.training-field{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.842);
+  box-shadow: 0 2px 6px #c1ced7;
+  overflow: hidden;
+  width: 80%;
+  max-width: 600px;
+  margin: 70px auto auto;
+}
+
+.training-name img{
+  width: 60px;
+  height: 60px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.training-field .training-name a{
+  vertical-align: middle;
+  font-size: 20px;
+  margin-left: 15px;
+  color: black;
+  font-weight: 600;
+}
+
+.training-name{
+  text-align: left;
+}
+
+.training-text{
+  display: flex;
+  margin-top: 40px;
+}
+
+.train-content{
+  color: black;
+  text-align: left;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.sub-show{
+  margin-top: 5px;
+  font-size: 17px;
+}
+
+.sub-show2{
+  display: inline;
+}
+
+.tag-show{
+  display: inline;
+  margin-left: 30px;
+  font-size: 16px;
+}
+
+.training-time{
+  font-size: 20px;
+  color: #5f84a1;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.user-count{
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.user-count-number{
+  font-size: 40px;
+  display: inline;
+  margin-left: 20px;
+  color: rgb(255, 0, 200);
+  font-weight: 800;
+}
+
+.user-count-text{
+  display: inline;
+  font-size: 16px;
+}
+
+.check{
+  font-size: 50px;
+  text-align: left;
+  margin-left: 40px;
+}
+
+.not-clear{
+  color: gray;
+}
+
+.clear{
+  color: rgb(255, 0, 200);
+}
+
+.clear-content{
+  text-align: left;
+  margin: 20px 0 0 10px;
+}
+
+.clear-text{
+  display: inline;
+  color: rgb(255, 0, 200);
+  font-weight: 800;
+  font-size: 18px;
+}
+.clear-text-not{
+  display: inline;
+  color: gray;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.block{
+  display: block;
+  margin-left: 70%;
+}
+
+// clear-user
+
+.clear-heading{
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem 1rem 4rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+  text-align: left;
+  margin-top: 60px;
+  margin-right: 25%;
+  margin-bottom: 40px;
+}
+
+.clear-heading:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
+
+.clear-container {
+  padding: 20px 30px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #c1ced7;
+  display: table;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.clear-left img {
+  width: 70px;
+  height: 70px;
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+}
+
+.clear-right a{
+  vertical-align: middle;
+  font-size: 20px;
+  margin-left: 15px;
+  color: black;
+  font-weight: 600;
+}
+
+.clear-left {
+  float: left;
+  width: 10%;
+}
+
+.clear-right {
+  width: 90%;
+  padding-left: 25px;
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.clear-date{
+  width: 100%;
+  text-align: right;
+  color: #5f84a1;
   font-weight: 500;
 }

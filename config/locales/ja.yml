@@ -19,9 +19,9 @@ ja:
       user:
         name: 名前
         nickname: ユーザーID
-        coath: 監督
         image_name: アイコン画像
         back_number: 背番号
+        prefecture: 所在地
         password: パスワード
         password_confirmation: パスワード（確認）
         created_at: 登録日時

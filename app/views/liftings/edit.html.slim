@@ -8,8 +8,7 @@
           ul#error_explanation
             - @lifting.errors.full_messages.each do |message|
               li= message
-
-        = form_with url: "/liftings/#{@lifting.id}",method: :patch, local: true do |f|
+        = form_with model: @lifting,method: :patch, local: true do |f|
           .form-group
             = f.label :record, 'リフティングの最高記録'
             = f.text_field :record, class: 'form-control',value: @lifting.record
@@ -17,3 +16,5 @@
             = f.label :remark, '備考'
             = f.text_area :remark,rows: 3, class: 'form-control',value: @lifting.remark
           =f.submit '変更する', class: 'btn btn-primary'
+      .nav.justify-content-end
+        = link_to '詳細に戻る', "/liftings/#{@lifting.id}", class: 'btn btn-secondary'

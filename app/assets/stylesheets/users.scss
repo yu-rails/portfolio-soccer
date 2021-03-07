@@ -5,6 +5,13 @@
   padding-bottom: 30px;
 }
 
+.form{
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+}
+
 .container{
   padding-top: 40px;
 }
@@ -78,7 +85,9 @@ li{
 .users-form{
   padding: 10px;
   border-radius: 8px;
+  margin-top: 50px;
 }
+
 
 // show
 
@@ -101,7 +110,8 @@ li{
   color: #0075a9;
   border-radius: 0 10px 10px 10px;
   background: #d8ecf5;
-  margin-bottom: 60px;
+  max-width: 900px;
+  margin: 0 auto 60px;
 }
 
 .userid:before{
@@ -135,6 +145,10 @@ li{
   color: rgb(187, 255, 0) ;
 }
 
+.fa-star{
+  font-size: 40px;
+}
+
 .exit{
   background-color: rgb(100, 60, 0);
   font-size: 24px;
@@ -166,10 +180,11 @@ li{
 }
 .lifting-text{
   width: 100%;
-  margin: 80px 0 15px;
+  margin: 80px auto 15px;
   font-size: 24px;
   padding: 5px 15px;
   border-radius: 10px;
+  max-width: 900px;
 }
 .yazi{
   font-size: 50px;
@@ -180,6 +195,7 @@ li{
   margin: auto;
   background-color: rgba(173, 223, 59, 0.822);
   box-shadow: 0 2px 6px #4c534a;
+  max-width: 900px;
 }
 
 .maximum-text{
@@ -193,15 +209,17 @@ li{
 }
 
 .user-tabs {
-  margin-top: 50px;
-  margin-bottom: 0px;
   padding-left: 0px;
   background-color: rgba(255, 255, 255, 0.842);
   overflow: hidden;
   box-shadow: 0 2px 6px #4c534a;
+  max-width: 900px;
+  margin: 50px auto 0px;
 }
 
 .user-tabs li {
+  width: 25%;
+  text-align: center;
   float: left;
   list-style: none;
 }
@@ -227,6 +245,8 @@ li{
   box-shadow: 0 2px 6px #4c534a;
   display: table;
   width: 100%;
+  max-width: 900px;
+  margin: auto;
 }
 
 .lifting-record a{
@@ -274,7 +294,10 @@ li{
   vertical-align: middle;
 }
 
-
+.mb-3{
+  max-width: 900px;
+  margin: auto;
+}
 
 ////////////////
 .users-edit{
@@ -282,4 +305,56 @@ li{
   background-size: cover;
   background-position: center 60%;
   padding-bottom: 30px;
+}
+
+// trainings
+
+.col-sm-5{
+  margin-top: 30px;
+}
+
+
+//favorites
+
+.not-shine{
+  color: gray;
+}
+.shine{
+  color: gold;
+}
+
+.favorite-remove{
+  font-size: 30px;
+  color: red;
+}
+
+.favorite-index{
+  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.842);
+  overflow: hidden;
+  box-shadow: 0 2px 6px #4c534a;
+  display: table;
+  width: 100%;
+  font-size: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+//weather
+.weather{
+  background-color: rgb(10, 121, 224);
+  margin-bottom: 0;
+  border: inset 10px #00eeff ;
+  font-weight: 600;
+  color: #fff;
+  padding-left: 40px;
+}
+#weather{
+  height: 100px;
+  background-color: skyblue;
+}
+.weather-report{
+  width:20%;
+  float:left;
+  text-align: center;
 }

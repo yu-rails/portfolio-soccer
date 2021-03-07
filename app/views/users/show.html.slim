@@ -2,10 +2,20 @@
   .container
     .user
       h3.username.form-heading
+        - if @current_user.id != @user.id
+          - if Favorite.find_by(current_user_id: current_user.id, user_id: @user.id)   
+            = link_to user_favorite_path(@user), remote: true, method: :delete do
+              .fas.fa-star.shine
+          - else
+            = link_to user_favorites_path(@user), remote: true, method: :post do
+              .fas.fa-star.not-shine
         span.bn
           | #{@user.back_number}
         = @user.name
-      img src="/user_images/#{@user.image_name}"
+      - if @user.image_name?
+        img src="#{@user.image_name}" 
+      - else
+        image src="/assets/default_user.jpg"
       p.userid= @user.nickname
       - if @user.id == @current_user.id
         button.btn.exit.fas.fa-user-edit= link_to "編集する","/users/#{@user.id}/edit",class: "Editlink"
@@ -13,6 +23,7 @@
         .dropdown-menu[aria-labelledby="btnGroupDrop1"]
           = link_to "練習メニューを書く","/trainings/new",class: "dropdown-item"
           = link_to "練習メニューを見る","/trainings",class: "dropdown-item"
+        
         p.lifting-text.bg-dark.text-white 1日1回 その日のリフティングの最高回数を記録してみよう！
         .oneday
           .fas.fa-arrow-circle-down.yazi
@@ -21,11 +32,14 @@
       - if @user.liftings.present?
         .maximum-tab
           .maximum-text #{@user.name}のリフティングの最高記録は
-          .maximum-record= @max+"回"
+          .maximum-record= @max.to_s+"回"
 
       ul.user-tabs
         li.active= link_to "記録", "/users/#{@user.id}"
-        li= link_to "練習", "/users/#{@user.id}"
+        li= link_to "練習", "/users/#{@user.id}/trainings"
+        li= link_to "クリア", "/users/#{@user.id}/clears"
+        - if @user.id == @current_user.id
+          li= link_to "☆", "/users/#{@user.id}/favorites"
 
       - @liftings.each do |lifting|
         .lifting-index
@@ -33,7 +47,7 @@
             = l lifting.created_at, format: :short, class: "created"
           .lifting-center
             .lifting-record
-              = link_to lifting.record + "回", "/liftings/#{lifting.id}"
+              = link_to lifting.record.to_s + "回", "/liftings/#{lifting.id}"
           .lifting-right
             .lifting-remark
               - if lifting.remark?
@@ -41,4 +55,49 @@
       .mb-3
         = paginate @liftings
         .alert.alert-info= page_entries_info @liftings, entry_name: "記録"
-      
+- if @current_user.id == @user.id
+  - if @user.prefecture.present?
+    h3.weather= @user.prefecture + "の天気"
+    #weather
+
+        javascript:
+          $(function () {
+            var API_KEY = "#{ENV['OPEN_WEATHER_MAP_API']}";
+            var city = "#{@user.prefecture}";
+            var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
+
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                type: 'GET',
+              })
+              .done(function (data) {
+                var insertHTML = '';
+                var cityName = data.city.name;
+                $('#city-name').html(cityName);
+                for (var i = 0; i <= 32; i = i + 8) {
+                  insertHTML += buildHTML(data, i);
+                }
+                $('#weather').html(insertHTML);
+              })
+              .fail(function (data) {
+                alert('天気予報取得に失敗しました');
+              });
+          });
+
+          function buildHTML(data, i) {
+            var Week = new Array('(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)');
+            var date = new Date(data.list[i].dt_txt);
+            date.setHours(date.getHours() + 9);
+            var month = date.getMonth() + 1;
+            var day = month + '/' + date.getDate() + Week[date.getDay()];
+            var icon = data.list[i].weather[0].icon;
+            var html =
+              '<div class="weather-report">' +
+                '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
+                '<span class="weather-date">' + day + "</span>" +
+                '<div>' + '<span class="weather-temp-max" style="color:red; font-weight: 600;">' + Math.round(data.list[i].main.temp_max) + "℃</span>" + " / " +
+                '<span class="weather-temp-min" style="color:blue; font-weight: 600;">' + Math.floor(data.list[i].main.temp_min) + "℃</span>" + "</div>" + 
+              '</div>';
+            return html
+          }
