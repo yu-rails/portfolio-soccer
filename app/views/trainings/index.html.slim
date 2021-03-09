@@ -28,7 +28,7 @@
                   - if training.user.image_name?
                     img.card-title src="#{training.user.image_name}" 
                   - else
-                    image.card-title src="/assets/default_user.jpg"
+                    image.card-title= image_tag asset_path("default_user.jpg")
                   = link_to training.user.name,"/users/#{training.user_id}"
                   .card-subtitle 終了日
                   .card-subtitle= training.end_on
@@ -59,7 +59,7 @@
                     - if training.user.image_name?
                       img.card-title src="#{training.user.image_name}" 
                     - else
-                      image.card-title src="/assets/default_user.jpg"
+                      image.card-title= image_tag asset_path("default_user.jpg")
                     = link_to training.user.name,"/users/#{training.user_id}"
                     .card-subtitle 終了日
                     .card-subtitle= training.end_on

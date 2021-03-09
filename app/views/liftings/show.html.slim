@@ -6,7 +6,7 @@
         - if @user.image_name?
           img src="#{@user.image_name}" 
         - else
-          image src="/assets/default_user.jpg"
+          = image_tag asset_path("default_user.jpg")
         = link_to @user.name, "/users/#{@user.id}"
       .lift-oya
         - if @lifting.record.to_i < 50

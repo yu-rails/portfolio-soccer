@@ -7,7 +7,7 @@
         - if @training.user.image_name?
           img src="#{@training.user.image_name}" 
         - else
-          image src="/assets/default_user.jpg"
+          = image_tag asset_path("default_user.jpg")
         = link_to @user.name, "/users/#{@user.id}"
         .card-subtitle.sub-show 終了日
         .card-subtitle.sub-show2= @training.end_on
@@ -71,10 +71,11 @@
           - if user.image_name?
             img src="#{user.image_name}" 
           - else
-            image src="/assets/default_user.jpg"
+            = image_tag asset_path("default_user.jpg")
         .clear-right
           = link_to user.name, "/users/#{user.id}"
           .clear-date= l clear.created_at
     .mb-3
       .alert.alert-info= page_entries_info @clears, entry_name: "クリアしたユーザ"
       = paginate @clears
+      

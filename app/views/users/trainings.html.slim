@@ -15,7 +15,7 @@
       - if @user.image_name?
         img src="#{@user.image_name}" 
       - else
-        image src="/assets/default_user.jpg"
+        = image_tag asset_path("default_user.jpg")
       p.userid= @user.nickname
       - if @user.id == @current_user.id
         button.btn.exit.fas.fa-user-edit= link_to "編集する","/users/#{@user.id}/edit",class: "Editlink"
@@ -46,7 +46,7 @@
                     - if training.user.image_name?
                       img.card-title src="#{training.user.image_name}" 
                     - else
-                      image.card-title src="/assets/default_user.jpg"
+                      image.card-title= image_tag asset_path("default_user.jpg")
                     = link_to training.user.name,"/users/#{training.user_id}"
                     .card-subtitle 終了日
                     .card-subtitle= training.end_on
