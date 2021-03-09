@@ -1,5 +1,5 @@
 .jumbotron {
-  background-image: url("top.jpg");
+  background-image: image-url("top.jpg");
   background-size: cover;
   background-position: center 60%;
 }
@@ -125,7 +125,7 @@
   font-size: 20px;
 }
 
-.carousel img{
+.carousel .about-image{
   width: 100%;
   max-width: 600px;
   height: auto;

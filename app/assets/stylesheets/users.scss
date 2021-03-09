@@ -1,5 +1,5 @@
 .users-new{
-  background-image: url("new.jpg");
+  background-image: image-url("new.jpg");
   background-size: cover;
   background-position: center 60%;
   padding-bottom: 30px;
@@ -92,7 +92,7 @@ li{
 // show
 
 .users-show{
-  background-image: url("show.jpg");
+  background-image: image-url("show.jpg");
   background-size: cover;
   background-position: center 60%;
   padding-bottom: 30px;
@@ -301,7 +301,7 @@ li{
 
 ////////////////
 .users-edit{
-  background-image: url("new.jpg");
+  background-image: image-url("new.jpg");
   background-size: cover;
   background-position: center 60%;
   padding-bottom: 30px;
