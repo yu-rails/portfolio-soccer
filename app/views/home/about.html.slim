@@ -7,20 +7,20 @@
     .carousel
       h3 リフティングの回数を記録！
       p 一日一回だけなので忘れず毎日記録しよう！
-      .about-image= image_tag asset_path("about0.png")
+      = image_tag asset_path("about0.png")
 
     .carousel
       h3 自分の練習メニューを作成！
       p 指定した終了日までにクリアしよう！
-      .about-image= image_tag asset_path("about1-1.png")
-      .about-image= image_tag asset_path("about1-2.png")
+      = image_tag asset_path("about1-1.png")
+      = image_tag asset_path("about1-2.png")
     = link_to "練習メニューを見に行く！", "/trainings", class: "btn btn-dark"
 
     .carousel
       h3.small-font 自分や人の練習メニューをクリア！
       p クリアした人を見ることもできる！
-      .about-image= image_tag asset_path("about2.png")
-      .about-image= image_tag asset_path("about3.png")
+      = image_tag asset_path("about2.png")
+      = image_tag asset_path("about3.png")
     .about-main
       h2 さぁサカキロを始めよう！
       = link_to "新規登録", "/signup", class: "btn btn-primary btn-lg btn-block under"
