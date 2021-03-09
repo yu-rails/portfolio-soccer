@@ -28,7 +28,7 @@
                   - if training.user.image_name?
                     img.card-title src="#{training.user.image_name}" 
                   - else
-                    .card-title= image_tag asset_path("default_user.jpg")
+                    card-title= image_tag asset_path("default_user.jpg")
                   = link_to training.user.name,"/users/#{training.user_id}"
                   .card-subtitle 終了日
                   .card-subtitle= training.end_on
@@ -59,7 +59,7 @@
                     - if training.user.image_name?
                       img.card-title src="#{training.user.image_name}" 
                     - else
-                      .card-title= image_tag asset_path("default_user.jpg")
+                      card-title= image_tag asset_path("default_user.jpg")
                     = link_to training.user.name,"/users/#{training.user_id}"
                     .card-subtitle 終了日
                     .card-subtitle= training.end_on
@@ -67,15 +67,16 @@
                     p.card-text= safe_join(training.content.split("\n"),tag(:br))
                   .card-footer
                     .left-footer
-                      .index-clear
-                        -if Clear.find_by(user_id: current_user.id, training_id: training.id)   
-                          = link_to training_clear_path(training,training.id), remote: true, method: :delete do
-                           .fas.fa-flag-checkered.clear
-                        - else
-                          = link_to training_clears_path(training,training.id), remote: true, method: :post do
-                            .fas.fa-flag-checkered.not-clear
-                        - clears_count = Clear.where(training_id: training.id).count
-                        .index-count= clears_count.to_s
+                      - if current_user
+                        .index-clear
+                          -if Clear.find_by(user_id: current_user.id, training_id: training.id)   
+                            = link_to training_clear_path(training,training.id), remote: true, method: :delete do
+                             .fas.fa-flag-checkered.clear
+                          - else
+                            = link_to training_clears_path(training,training.id), remote: true, method: :post do
+                              .fas.fa-flag-checkered.not-clear
+                          - clears_count = Clear.where(training_id: training.id).count
+                          .index-count= clears_count.to_s
                       = link_to "詳しく！","/trainings/#{training.id}", class: "btn btn-info btn-show"
                     .right-footer
                       - if training.tag?
