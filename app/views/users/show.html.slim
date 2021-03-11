@@ -16,8 +16,8 @@
         img src="#{@user.image_name}" 
       - else
         = image_tag asset_path("default_user.jpg")
-      p.userid= @user.nickname
       - if @user.id == @current_user.id
+        p.userid= @user.nickname
         button.btn.exit.fas.fa-user-edit= link_to "編集する","/users/#{@user.id}/edit",class: "Editlink"
         button.btn.sear.fas.fa-running.dropdown-toggle.Editlink#btnGroupDrop1[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]トレーニング
         .dropdown-menu[aria-labelledby="btnGroupDrop1"]

@@ -21,5 +21,5 @@
             = f.label :tag, 'タグ (設定すると検索しやすくなります)'
             = f.text_field :tag, class: 'form-control',value: @training.tag,placeholder: "10文字以内(無記入でも可)"
           p.warining 終了予定日になるとトレーニングメニュー一覧から消え、クリアボタンが押せなくなります！
-          p.warining 終了予定日は当日から10日以内までに設定可能です！
+          p.warining 終了予定日は明日から10日以内までに設定可能です！
           =f.submit '作成する', class: 'btn btn-primary'
