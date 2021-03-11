@@ -76,7 +76,7 @@
                 var insertHTML = '';
                 var cityName = data.city.name;
                 $('#city-name').html(cityName);
-                for (var i = 0; i <= 32; i = i + 8) {
+                for (var i = 0; i <= 16; i = i + 8) {
                   insertHTML += buildHTML(data, i);
                 }
                 $('#weather').html(insertHTML);
@@ -88,17 +88,20 @@
 
           function buildHTML(data, i) {
             var Week = new Array('(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)');
-            var date = new Date(data.list[i].dt_txt);
-            date.setHours(date.getHours() + 9);
-            var month = date.getMonth() + 1;
-            var day = month + '/' + date.getDate() + Week[date.getDay()];
+            if (i == 0){
+              var day = "今日"
+            } else if (i == 8){
+              var day = "明日"
+            } else {
+              var day = "明後日"
+            }
             var icon = data.list[i].weather[0].icon;
             var html =
               '<div class="weather-report">' +
-                '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
                 '<span class="weather-date">' + day + "</span>" +
-                '<div>' + '<span class="weather-temp-max" style="color:red; font-weight: 600;">' + Math.round(data.list[i].main.temp_max) + "℃</span>" + " / " +
-                '<span class="weather-temp-min" style="color:blue; font-weight: 600;">' + Math.floor(data.list[i].main.temp_min) + "℃</span>" + "</div>" + 
+                '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
+                '<div>' + '<span class="weather-temp-max" style="color:red; font-weight: 800; font-size: 20px;">' + Math.round(data.list[i].main.temp_max) + "℃</span>" + " / " +
+                '<span class="weather-temp-min" style="color:blue; font-weight: 800; font-size: 20px;">' + Math.floor(data.list[i].main.temp_min) + "℃</span>" + "</div>" + 
               '</div>';
             return html
           }

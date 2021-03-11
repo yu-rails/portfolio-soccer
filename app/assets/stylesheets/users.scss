@@ -352,11 +352,17 @@ li{
   padding-left: 40px;
 }
 #weather{
-  height: 100px;
+  height: 120px;
   background-color: skyblue;
 }
+.weather-date{
+  font-weight: 700;
+  display: block;
+  font-size: 20px;
+  color: #941c1c;
+}
 .weather-report{
-  width:20%;
+  width:33%;
   float:left;
   text-align: center;
 }
