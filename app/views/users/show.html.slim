@@ -55,8 +55,7 @@
       .mb-3
         = paginate @liftings
         .alert.alert-info= page_entries_info @liftings, entry_name: "記録"
-/var API_KEY = "#{ENV['OPEN_WEATHER_MAP_API']}";
-/var API_KEY = "59da60a409dd71e45f4efb1cf504bb33";
+
 - if @current_user.id == @user.id
   - if @user.prefecture.present?
     h3.weather= @user.prefecture + "の天気"
