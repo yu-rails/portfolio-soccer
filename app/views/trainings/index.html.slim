@@ -21,7 +21,7 @@
     .training-menu
       .card-deck
         .row
-          - if @trainings.count < 3
+          - if @trainings.count <= 3
             - @trainings.each do |training|
               .card.h-100[style="width: 500px"]
                 .card-body
@@ -53,7 +53,7 @@
                     .time-ago= time_ago_in_words(training.created_at) + "前"
           - else
             - @trainings.each do |training|
-              .col-sm-4
+              .col-sm-12.col-md-6.col-lg-4
                 .card.h-100
                   .card-body
                     - if training.user.image_name?

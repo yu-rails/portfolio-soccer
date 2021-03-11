@@ -39,10 +39,33 @@
       .lifting-index
         .card-deck
           .row
+           - if @clears.count <= 2
+            - @clears.each do |clear|
+                - training = Training.find_by(id: clear.training_id)
+              
+                .card.h-100[style="width: 400px"]
+                  .card-body
+                    - if training.user.image_name?
+                      img.card-title src="#{training.user.image_name}" 
+                    - else
+                      card-title= image_tag asset_path("default_user.jpg")
+                    = link_to training.user.name,"/users/#{training.user_id}"
+                    .card-subtitle 終了日
+                    .card-subtitle= training.end_on
+                    hr.line
+                    p.card-text= safe_join(training.content.split("\n"),tag(:br))
+                  .card-footer
+                    .left-footer
+                      = link_to "詳しく！","/trainings/#{training.id}", class: "btn btn-info btn-show"
+                    .right-footer
+                      - if training.tag?
+                        .tag= "タグ：" + training.tag
+                      .time-ago= time_ago_in_words(training.created_at) + "前"
+           - else
             - @clears.each do |clear|
               - training = Training.find_by(id: clear.training_id)
-              .col-sm-5
-                .card.h-100[style="width: 350px"]
+              .col-lg-5.col-xs-12
+                .card.h-100
                   .card-body
                     - if training.user.image_name?
                       img.card-title src="#{training.user.image_name}" 
