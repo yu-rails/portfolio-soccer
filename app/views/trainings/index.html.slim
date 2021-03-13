@@ -33,7 +33,8 @@
                   .card-subtitle 終了日
                   .card-subtitle= training.end_on
                   hr.line
-                  p.card-text= safe_join(training.content.split("\n"),tag(:br))
+                  .card-url
+                    p.card-text= auto_link(safe_join(training.content.split("\n"),tag(:br)))
                 .card-footer
                   .left-footer
                     - if current_user
@@ -64,7 +65,8 @@
                     .card-subtitle 終了日
                     .card-subtitle= training.end_on
                     hr.line
-                    p.card-text= safe_join(training.content.split("\n"),tag(:br))
+                    .card-url
+                      p.card-text= auto_link(safe_join(training.content.split("\n"),tag(:br)))
                   .card-footer
                     .left-footer
                       - if current_user

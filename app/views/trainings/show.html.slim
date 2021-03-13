@@ -15,7 +15,7 @@
           .tag.tag-show= "タグ：" + @training.tag
         hr.line
       .training-text
-        .train-content= safe_join(@training.content.split("\n"),tag(:br))
+        .train-content= auto_link(safe_join(@training.content.split("\n"),tag(:br)))
       .training-time
         = l @training.created_at
         hr.line
