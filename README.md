@@ -2,6 +2,7 @@
 
 ### 《サッカーに関する練習記録をユーザーが共有するアプリ》
 
+https://polar-fjord-98663.herokuapp.com
 
 ## 1. アプリケーションの概要
 
@@ -18,7 +19,7 @@
 
 ・開発環境　→　Visual Studio Code
 
-・言語　→　Ruby on Rails, JavaScript
+・言語　→　Ruby on Rails, JavaScript, Slim, Scss
 
 
 ## 3. アプリケーションの機能
@@ -49,9 +50,13 @@
 
 ### トレーニング
 
-・トレーニングメニューのCreate,Destroy機能　→　training
+・トレーニングメニューのCreate,Read,Destroy機能　→　training
 
 ・設定した終了予定日になると一覧から消え,クリアもできなくなる機能(明日から10日以内まで設定可能)
+
+・フォームで入力した改行を反映させる機能　→　safe_join
+
+・トレーニング内容に含まれるURLをリンクとして表示する機能　→　gem 'rails_autolink'
 
 ・ユーザ名,タグ名,終了予定日で検索できる機能　→　gem 'ransack'
 
