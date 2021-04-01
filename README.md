@@ -8,7 +8,7 @@ https://polar-fjord-98663.herokuapp.com
 
 ユーザーID：guest
 
-パスワード：
+パスワード：password
 
 
 ## 1. アプリケーションの概要
